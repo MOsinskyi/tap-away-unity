@@ -1,0 +1,24 @@
+﻿using CurrentLevelService.Enums;
+using CurrentLevelService.Interfaces;
+
+namespace CurrentLevelService.Scripts
+{
+  public sealed class MediumLevelType : ILevelType
+  {
+    private readonly ILevelStateStorage _storage;
+    public Types Name => Types.Medium;
+    public int LevelCount { get; }
+
+    public MediumLevelType(ILevelStateStorage storage, int levelCount)
+    {
+      _storage = storage;
+      LevelCount = levelCount;
+    }
+
+    public bool IsCurrent
+    {
+      get => _storage.GetState(States.IsMedium);
+      set => _storage.SetState(States.IsMedium, value);
+    }
+  }
+}

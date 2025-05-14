@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 320ea99aa5bdb844cb3c7c5629c0d70f
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 291167
+  packageName: Gif For Unity
+  packageVersion: 1.1
+  assetPath: Assets/GifToUnity/Editor/GifImporter.Editor.asmdef
+  uploadId: 729741

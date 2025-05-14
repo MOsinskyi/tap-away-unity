@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b290f70636c6675429adae9fa92e7dbe
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 244133
+  packageName: Universal Orbit Camera
+  packageVersion: 1.0
+  assetPath: Assets/Universal Orbit Camera/Prefabs/Camera Rig.prefab
+  uploadId: 564438
