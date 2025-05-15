@@ -33,12 +33,12 @@ namespace Cube.Scripts
 
       _config = config;
       _moves = moves;
-      _effectsHandler = new CubeEffectsHandler(_meshRenderer, _config, transform);
-      _movement = new CubeMovement(transform, _config, currentLevel);
+      _effectsHandler = new CubeEffectsHandler(_meshRenderer, _config, transform, currentLevel.LevelColor);
+      _movement = new CubeMovement(transform, _config, currentLevel, _moves);
       _instantiateAnimation = new CubeInstantiateAnimation(transform, _config);
 
       _instantiateAnimation.PlayAnimation();
-
+      
       Subscribe();
       Freeze();
     }
@@ -112,7 +112,6 @@ namespace Cube.Scripts
       {
         Select();
         _movement.Move(Unselect);
-        _moves?.SpentMove();
       }
     }
 

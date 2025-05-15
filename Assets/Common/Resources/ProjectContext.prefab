@@ -74,3 +74,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128b0ba5c397476d9e4b9951ddd14054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coroutinePerformerPrefab: {fileID: 5053228545060581112, guid: a62fc9a814ef8f545b66fcf67a06ed49, type: 3}

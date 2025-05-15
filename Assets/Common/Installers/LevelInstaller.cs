@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Common.InputService.Scripts;
 using Common.Utils;
 using CurrentLevelService.Interfaces;
 using CurrentLevelService.Scripts;
@@ -9,8 +8,6 @@ using LevelService.Factories.Scripts;
 using LevelService.Interfaces;
 using LevelService.Scripts;
 using Player.Scripts;
-using UIService.Presenters;
-using UnityEngine;
 using Zenject;
 
 namespace Common.Installers
@@ -27,10 +24,8 @@ namespace Common.Installers
     public override void InstallBindings()
     {
       ResolveFactories();
-      BindInputService();
       BindPlayer();
-      BindCoroutinePerformer();
-      BindPresenters();
+      BindLevelUI();
       BindGameHandler();
 
       BindLevelStateStorage();
@@ -138,45 +133,12 @@ namespace Common.Installers
         .AsSingle();
     }
 
-    private void BindPresenters()
+    private void BindLevelUI()
     {
-      Container
-        .Bind<MovesCountPresenter>()
-        .FromComponentInHierarchy()
-        .AsSingle();
-      Container
-        .Bind<LevelCompletedPresenter>()
-        .FromComponentInHierarchy()
-        .AsSingle();
-      Container
-        .Bind<CurrentLevelPresenter>()
-        .FromComponentInHierarchy()
-        .AsSingle();
-      Container
-        .Bind<GameOverPresenter>()
-        .FromComponentInHierarchy()
-        .AsSingle();
-      Container
-        .Bind<RankBarPresenter>()
-        .FromComponentInHierarchy()
-        .AsSingle();
-      Container
-        .Bind<RankCompletedPresenter>()
-        .FromComponentInHierarchy()
-        .AsSingle();
-
       Container
         .Bind<LevelUIContext>()
         .AsSingle()
         .NonLazy();
-    }
-
-    private void BindCoroutinePerformer()
-    {
-      Container
-        .Bind<CoroutinePerformer>()
-        .FromComponentInHierarchy()
-        .AsSingle();
     }
 
     private void BindPlayer()
@@ -185,22 +147,6 @@ namespace Common.Installers
         .Bind<PlayerPointer>()
         .FromComponentInHierarchy()
         .AsSingle();
-    }
-
-    private void BindInputService()
-    {
-      if (SystemInfo.deviceType == DeviceType.Handheld)
-      {
-        Container
-          .BindInterfacesAndSelfTo<MobileInput>()
-          .AsSingle();
-      }
-      else
-      {
-        Container
-          .BindInterfacesAndSelfTo<DesktopInput>()
-          .AsSingle();
-      }
     }
   }
 }

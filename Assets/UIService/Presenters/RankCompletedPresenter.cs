@@ -2,9 +2,9 @@
 using Common.Utils;
 using GameService.Scripts;
 using UIService.Configs;
-using UIService.Interfaces;
 using UIService.Models;
 using UnityEngine.UI;
+using Zenject;
 
 namespace UIService.Presenters
 {
@@ -12,7 +12,8 @@ namespace UIService.Presenters
   {
     private Rank _rank;
 
-    public void Construct(Rank rank, UniversalUtils utils, GameHandler gameHandler)
+    [Inject]
+    private void Construct(Rank rank, UniversalUtils utils, GameHandler gameHandler)
     {
       _rank = rank;
       var config = utils.ConfigLoader.Load<RankCompletedConfig>();
@@ -41,11 +42,6 @@ namespace UIService.Presenters
     protected override void BindListeners()
     {
       ReplayButton.GetComponent<Button>().onClick.AddListener(Hide);
-    }
-
-    private void Hide()
-    {
-      PlayHideAnimation(Config.AnimationDuration);
     }
 
     protected override void OnShowCompleted()

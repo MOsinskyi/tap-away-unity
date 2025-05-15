@@ -58,6 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <LevelName>k__BackingField: Tutorial 5
+  <LevelColor>k__BackingField: {r: 0.95686275, g: 0.5274461, b: 0.49019608, a: 1}
   hasTutorialMessage: 1
   tutorialMessagePresenter: {fileID: 5307418390395547972, guid: 4c923837f5093ff43a977fa874a29b76, type: 3}
 --- !u!1001 &2051695181040055136

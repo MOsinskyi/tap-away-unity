@@ -20,6 +20,19 @@ namespace UIService.Presenters
 
         private Moves _moves;
         private TMP_Text _text;
+        
+        public void Construct(Moves moves = null)
+        {
+            _moves = moves;
+            
+            UpdateText();
+            
+            if (moves != null)
+            {
+                Subscribe();
+            }
+            
+        }
 
         private void OnDisable()
         {
@@ -46,18 +59,6 @@ namespace UIService.Presenters
             _moves.OnMovesAdded -= OnMoveCountChanged;
         }
 
-        public void Construct(Moves moves = null)
-        {
-            _moves = moves;
-            
-            UpdateText();
-            
-            if (moves != null)
-            {
-                Subscribe();
-            }
-            
-        }
 
         private void UpdateText()
         {

@@ -9,14 +9,10 @@ namespace UIService.Presenters
     {
         private Level _level;
         private TMP_Text _text;
-
-        private void OnValidate()
-        {
-            _text = GetComponent<TMP_Text>();
-        }
         
         public void Construct(Level currentLevel)
         {
+            _text = GetComponent<TMP_Text>();
             _level = currentLevel;
             UpdateText();
         }

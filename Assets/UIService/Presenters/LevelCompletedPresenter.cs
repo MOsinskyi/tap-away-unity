@@ -3,10 +3,7 @@ using Common.Interfaces;
 using Common.Utils;
 using GameService.Scripts;
 using UIService.Configs;
-using UIService.Interfaces;
-using UnityEngine.Diagnostics;
 using UnityEngine.UI;
-using Zenject;
 
 namespace UIService.Presenters
 {

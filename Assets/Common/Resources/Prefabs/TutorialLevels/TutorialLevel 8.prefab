@@ -61,6 +61,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <LevelName>k__BackingField: Tutorial 8
+  <LevelColor>k__BackingField: {r: 0.49019608, g: 0.5151013, b: 0.95686275, a: 1}
+  hasTutorialMessage: 0
+  tutorialMessagePresenter: {fileID: 0}
 --- !u!1001 &514504365028163023
 PrefabInstance:
   m_ObjectHideFlags: 0

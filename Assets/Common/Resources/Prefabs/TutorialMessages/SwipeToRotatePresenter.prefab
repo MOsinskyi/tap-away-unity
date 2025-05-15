@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.59119487, g: 0.59119487, b: 0.59119487, a: 0.34901962}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -275,6 +275,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4952112178281241922}
     m_Modifications:
+    - target: {fileID: 2398597611567022120, guid: e646109e10fbbab49bce1b6a30907b96, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5917570081273478408, guid: e646109e10fbbab49bce1b6a30907b96, type: 3}
       propertyPath: m_Name
       value: SwipePresenter

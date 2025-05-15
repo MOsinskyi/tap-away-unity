@@ -10,20 +10,21 @@ namespace Cube.Scripts
         private static readonly int BaseColor = Shader.PropertyToID("_BaseColor");
         private readonly CubeConfig _config;
         private readonly MeshRenderer _meshRenderer;
-        private readonly Color _startColor;
 
+        private Color _startColor;
         private readonly Vector3 _startPosition;
         private readonly Transform _transform;
 
         public event Action OnAnimationComplete;
 
-        public CubeEffectsHandler(MeshRenderer meshRenderer, CubeConfig config, Transform transform)
+        public CubeEffectsHandler(MeshRenderer meshRenderer, CubeConfig config, Transform transform, Color startColor)
         {
             _meshRenderer = meshRenderer;
             _config = config;
             _transform = transform;
-            _startColor = _meshRenderer.material.GetColor(BaseColor);
             _startPosition = _transform.localPosition;
+            
+            SetStartColor(startColor);
         }
 
         public void PlayCollisionAnimation(Vector3 punchDirection)
@@ -71,6 +72,12 @@ namespace Cube.Scripts
             _meshRenderer?.material
                 .DOColor(_startColor, BaseColor, _config.SwitchColorDuration)
                 .SetEase(Ease.Linear);
+        }
+
+        public void SetStartColor(Color color)
+        {
+            _meshRenderer?.material.SetColor(BaseColor, color);
+            if (_meshRenderer != null) _startColor = _meshRenderer.material.GetColor(BaseColor);
         }
     }
 }

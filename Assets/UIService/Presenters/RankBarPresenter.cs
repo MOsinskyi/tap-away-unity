@@ -1,9 +1,12 @@
-﻿using Common.Interfaces;
+﻿using System.Collections;
+using Common.Interfaces;
+using Common.Utils;
 using TMPro;
 using UIService.Configs;
 using UIService.Models;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace UIService.Presenters
 {
@@ -19,11 +22,12 @@ namespace UIService.Presenters
 
     private float _fillUnit;
 
-    public void Construct(RankBar model, Rank rank, RankConfig config)
+    [Inject]
+    public void Construct(RankBar model, Rank rank, UniversalUtils utils)
     {
       _model = model;
       _rank = rank;
-      _config = config;
+      _config = utils.ConfigLoader.Load<RankConfig>();
 
       SetCurrentRankText();
       SetNextRankText();
@@ -33,9 +37,29 @@ namespace UIService.Presenters
       Subscribe();
     }
 
-    private void UpdateValueText(int value)
+    private void UpdateValue(int value)
     {
-      progressBar.fillAmount = value * _fillUnit;
+      StartCoroutine(FillBar(value));
+    }
+
+    private IEnumerator FillBar(int targetValue)
+    {
+      var startFill = progressBar.fillAmount;
+      var targetFill = Mathf.Clamp01(targetValue * _fillUnit);
+      var delta = Mathf.Abs(targetFill - startFill);
+      
+      var duration = Mathf.Clamp(delta / _config.BaseFillSpeed, _config.MinFillDuration, _config.MaxFillDuration);
+
+      var time = 0f;
+      while (time < duration)
+      {
+        time += Time.deltaTime;
+        var t = time / duration;
+        progressBar.fillAmount = Mathf.Lerp(startFill, targetFill, t);
+        yield return null;
+      }
+
+      progressBar.fillAmount = targetFill;
     }
 
     private void SetNextRankText()
@@ -67,7 +91,7 @@ namespace UIService.Presenters
 
     private void OnValueChanged(int value)
     {
-      UpdateValueText(value);
+      UpdateValue(value);
     }
 
     public void Unsubscribe()

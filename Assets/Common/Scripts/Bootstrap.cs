@@ -1,15 +1,15 @@
+using Common.Utils;
 using GameService.Configs;
 using UnityEngine;
-using Zenject;
 
 namespace Common.Scripts
 {
-  public sealed class Bootstrap : MonoBehaviour
+  public sealed class Bootstrap
   {
-    [Inject]
-    private void Construct(GameConfig config)
+    private Bootstrap(UniversalUtils utils)
     {
-      Application.targetFrameRate = config.TargetFrameRate;
+      var gameConfig = utils.ConfigLoader.Load<GameConfig>();
+      Application.targetFrameRate = gameConfig.TargetFrameRate;
     }
   }
 }

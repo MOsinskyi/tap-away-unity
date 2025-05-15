@@ -57,6 +57,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <LevelName>k__BackingField: Level 1
+  <LevelColor>k__BackingField: {r: 0.5378165, g: 0.95686275, b: 0.49019608, a: 1}
   <MovesCount>k__BackingField: 16
 --- !u!1001 &329791731975942511
 PrefabInstance:

@@ -49,7 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <LevelName>k__BackingField: Tutorial 2
-  option: 0
+  <LevelColor>k__BackingField: {r: 0.51648694, g: 0.95686275, b: 0.49019608, a: 1}
+  hasTutorialMessage: 0
   tutorialMessagePresenter: {fileID: 0}
 --- !u!1001 &35224137121645236
 PrefabInstance:

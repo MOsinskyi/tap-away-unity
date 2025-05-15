@@ -2,6 +2,7 @@
 using Cube.Configs;
 using DG.Tweening;
 using LevelService.Scripts;
+using UIService.Models;
 using UnityEngine;
 
 namespace Cube.Scripts
@@ -9,6 +10,7 @@ namespace Cube.Scripts
   public sealed class CubeMovement
   {
     private readonly CubeConfig _config;
+    private readonly Moves _moves;
 
     private readonly Transform _transform;
     private readonly float _cubeScale;
@@ -17,9 +19,10 @@ namespace Cube.Scripts
     private Transform _obstacle;
     private Vector3 _startPosition;
 
-    public CubeMovement(Transform transform, CubeConfig config, Level currentLevel)
+    public CubeMovement(Transform transform, CubeConfig config, Level currentLevel, Moves moves = null)
     {
       _config = config;
+      _moves = moves;
       _transform = transform;
       _direction = Vector3.zero;
       _cubeScale = currentLevel.transform.localScale.x;
@@ -39,12 +42,14 @@ namespace Cube.Scripts
         if (CanMove(out var hit) || ObstacleOnRightMove(hit.transform))
         {
           MoveForward();
+          _moves?.SpentMove();
         }
         else
         {
           if (!ObstacleSelected(hit.transform))
           {
             BounceFromObstacle(hit.transform);
+            _moves?.SpentMove();
             return;
           }
 

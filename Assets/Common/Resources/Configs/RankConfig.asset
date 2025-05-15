@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxRank>k__BackingField: 99
   <MovesInRank>k__BackingField: 35
+  <BaseFillSpeed>k__BackingField: 2
+  <MinFillDuration>k__BackingField: 0.2
+  <MaxFillDuration>k__BackingField: 1
