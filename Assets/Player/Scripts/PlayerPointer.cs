@@ -3,6 +3,7 @@ using Common.InputService.Interfaces;
 using Common.Interfaces;
 using UIService.Models;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Player.Scripts
 {
@@ -30,7 +31,7 @@ namespace Player.Scripts
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (_inputHandler.IsPressed)
             {
                 var ray = _inputHandler.GetClickRay(_camera);
 

@@ -62,6 +62,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4952112178281241922}
     m_Modifications:
+    - target: {fileID: 2398597611567022120, guid: d2c4da2835ce8ec499f3f84167667685, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5917570081273478408, guid: d2c4da2835ce8ec499f3f84167667685, type: 3}
       propertyPath: m_Name
       value: Hand

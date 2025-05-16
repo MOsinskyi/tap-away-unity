@@ -202,7 +202,7 @@ PrefabInstance:
     - target: {fileID: 2398597611567022120, guid: 9f95ce7da66c18c4797106f6bae478b4, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: eda8b67dc55f4f048849b1c8632cc028, type: 3}
+      objectReference: {fileID: 21300000, guid: e2db7f24310e34845ad99e77ed9f9235, type: 3}
     - target: {fileID: 2398597611567022120, guid: 9f95ce7da66c18c4797106f6bae478b4, type: 3}
       propertyPath: m_Color.b
       value: 0.7568628
@@ -214,6 +214,10 @@ PrefabInstance:
     - target: {fileID: 2398597611567022120, guid: 9f95ce7da66c18c4797106f6bae478b4, type: 3}
       propertyPath: m_Color.r
       value: 0.7607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398597611567022120, guid: 9f95ce7da66c18c4797106f6bae478b4, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5917570081273478408, guid: 9f95ce7da66c18c4797106f6bae478b4, type: 3}
       propertyPath: m_Name
@@ -332,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3f106a78e1aa142b294d8d1a41114b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gif: {fileID: 11400000, guid: 9b1c130e8f27ece4a9accd940148ce99, type: 2}
+  Gif: {fileID: 11400000, guid: 8bdaf0da53e700744b8c5b7a42b02374, type: 2}
 --- !u!224 &3409114699118335361 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7614755983105692686, guid: 9f95ce7da66c18c4797106f6bae478b4, type: 3}

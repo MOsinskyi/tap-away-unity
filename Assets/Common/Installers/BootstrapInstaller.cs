@@ -35,7 +35,7 @@ namespace Common.Installers
 
     private void BindInputService()
     {
-      if (SystemInfo.deviceType == DeviceType.Handheld)
+      if (Application.isMobilePlatform)
       {
         Container
           .BindInterfacesAndSelfTo<MobileInput>()
