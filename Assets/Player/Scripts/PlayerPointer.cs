@@ -23,6 +23,7 @@ namespace Player.Scripts
         {
             _camera = GetComponent<Camera>();
             _inputHandler = inputHandler;
+            Debug.Log(_inputHandler.GetType());
         }
 
         public void SetMoves(Moves moves)
