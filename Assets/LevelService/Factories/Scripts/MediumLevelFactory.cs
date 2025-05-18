@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Common.Utils;
 using LevelService.Factories.Interfaces;
 using LevelService.Scripts;
 using UnityEngine;
@@ -11,10 +12,10 @@ namespace LevelService.Factories.Scripts
     private readonly Transform _container;
     private readonly List<MediumLevel> _levels;
 
-    public MediumLevelFactory(IEnumerable<MediumLevel> levels, Transform container)
+    public MediumLevelFactory(UniversalUtils utils, Transform container)
     {
       _container = container;
-      _levels = levels.ToList();
+      _levels = utils.ResourcesLoader.LoadLevels<MediumLevel>();
     }
         
     public Level GetLevel(int index)
@@ -25,5 +26,7 @@ namespace LevelService.Factories.Scripts
 
       return level;
     }
+
+    public int LevelCount => _levels.Count;
   }
 }

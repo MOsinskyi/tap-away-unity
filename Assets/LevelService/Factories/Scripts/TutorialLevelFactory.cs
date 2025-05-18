@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Common.Utils;
 using LevelService.Factories.Interfaces;
 using LevelService.Scripts;
 using UnityEngine;
@@ -13,10 +14,10 @@ namespace LevelService.Factories.Scripts
         private readonly List<TutorialLevel> _levels;
         private readonly RectTransform _tutorialScreen;
 
-        public TutorialLevelFactory(IEnumerable<TutorialLevel> levels, Transform container, RectTransform tutorialScreen)
+        public TutorialLevelFactory(UniversalUtils utils, Transform container, RectTransform tutorialScreen)
         {
             _container = container;
-            _levels = levels.ToList();
+            _levels = utils.ResourcesLoader.LoadLevels<TutorialLevel>();
             _tutorialScreen = tutorialScreen;
         }
 
@@ -29,5 +30,7 @@ namespace LevelService.Factories.Scripts
 
             return level;
         }
+
+        public int LevelCount => _levels.Count;
     }
 }

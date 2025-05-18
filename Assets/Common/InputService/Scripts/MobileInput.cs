@@ -18,6 +18,8 @@ namespace Common.InputService.Scripts
         
         public Ray GetClickRay(Camera camera)
         {
+            if (_touchscreen == null) return default;
+            
             var touchPosition = Vector2.zero;
             foreach (var touch in _touchscreen.touches
                          .Where(touch => touch.IsPressed()))
@@ -27,6 +29,6 @@ namespace Common.InputService.Scripts
             return camera.ScreenPointToRay(touchPosition);
         }
 
-        public bool IsPressed => _touchscreen.primaryTouch.press.wasPressedThisFrame;
+        public bool IsPressed => _touchscreen != null && _touchscreen.primaryTouch.press.wasPressedThisFrame;
     }
 }

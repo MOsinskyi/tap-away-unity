@@ -17,10 +17,12 @@ namespace Common.InputService.Scripts
         
         public Ray GetClickRay(Camera camera)
         {
+            if (_mouse == null) return default;
+            
             var mousePosition = _mouse.position.ReadValue();;
             return camera.ScreenPointToRay(mousePosition);
         }
         
-        public bool IsPressed => _mouse.leftButton.wasPressedThisFrame;
+        public bool IsPressed => _mouse != null && _mouse.leftButton.wasPressedThisFrame;
     }
 }

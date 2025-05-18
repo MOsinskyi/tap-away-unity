@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Common.Utils;
-using LevelService.Factories.Scripts;
-using LevelService.Scripts;
+﻿using LevelService.Factories.Scripts;
 using UnityEngine;
 using Zenject;
 
@@ -11,34 +8,15 @@ namespace Common.Installers
   {
     [SerializeField] private Transform levelContainer;
     [SerializeField] private RectTransform tutorialScreen;
-    
-    private UniversalUtils _utils;
 
     public override void InstallBindings()
     {
-      _utils = Container.Resolve<UniversalUtils>();
-      
       BindLevelContainer();
       BindTutorialScreen();
       
-      BindTutorialLevels();
       BindTutorialLevelFactory();
-      
-      BindEasyLevels();
       BindEasyLevelFactory();
-      
-      BindMediumLevels();
       BindMediumLevelFactory();
-    }
-
-    private void BindEasyLevels()
-    {
-      var easyLevels = _utils.ResourcesLoader.LoadLevels<EasyLevel>();
-
-      Container
-        .Bind<IEnumerable<EasyLevel>>()
-        .FromInstance(easyLevels)
-        .AsSingle();
     }
 
     private void BindTutorialScreen()
@@ -64,30 +42,10 @@ namespace Common.Installers
         .AsSingle();
     }
 
-    private void BindMediumLevels()
-    {
-      var mediumLevels = _utils.ResourcesLoader.LoadLevels<MediumLevel>();
-
-      Container
-        .Bind<IEnumerable<MediumLevel>>()
-        .FromInstance(mediumLevels)
-        .AsSingle();
-    }
-
     private void BindTutorialLevelFactory()
     {
       Container
         .Bind<TutorialLevelFactory>()
-        .AsSingle();
-    }
-
-    private void BindTutorialLevels()
-    {
-      var tutorialLevels = _utils.ResourcesLoader.LoadLevels<TutorialLevel>();
-
-      Container
-        .Bind<IEnumerable<TutorialLevel>>()
-        .FromInstance(tutorialLevels)
         .AsSingle();
     }
 

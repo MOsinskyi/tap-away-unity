@@ -1,5 +1,6 @@
 ﻿using CurrentLevelService.Enums;
 using CurrentLevelService.Interfaces;
+using LevelService.Factories.Scripts;
 
 namespace CurrentLevelService.Scripts
 {
@@ -10,10 +11,10 @@ namespace CurrentLevelService.Scripts
     
     public int LevelCount { get; }
 
-    public EasyLevelType(ILevelStateStorage storage, int levelCount)
+    public EasyLevelType(ILevelStateStorage storage, EasyLevelFactory factory)
     {
       _storage = storage;
-      LevelCount = levelCount;
+      LevelCount = factory.LevelCount;
     }
 
     public bool IsCurrent

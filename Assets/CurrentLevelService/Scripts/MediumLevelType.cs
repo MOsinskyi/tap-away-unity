@@ -1,5 +1,6 @@
 ﻿using CurrentLevelService.Enums;
 using CurrentLevelService.Interfaces;
+using LevelService.Factories.Scripts;
 
 namespace CurrentLevelService.Scripts
 {
@@ -9,10 +10,10 @@ namespace CurrentLevelService.Scripts
     public Types Name => Types.Medium;
     public int LevelCount { get; }
 
-    public MediumLevelType(ILevelStateStorage storage, int levelCount)
+    public MediumLevelType(ILevelStateStorage storage, MediumLevelFactory factory)
     {
       _storage = storage;
-      LevelCount = levelCount;
+      LevelCount = factory.LevelCount;
     }
 
     public bool IsCurrent

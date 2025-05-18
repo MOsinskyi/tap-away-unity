@@ -4,6 +4,7 @@ using Common.Interfaces;
 using UIService.Models;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 namespace Player.Scripts
 {
@@ -16,17 +17,18 @@ namespace Player.Scripts
         private IInputHandler _inputHandler;
 
         private bool _canSelect = true;
-        
-        public void Initialize(IInputHandler inputHandler, Moves moves = null)
+
+        [Inject]
+        private void Construct(IInputHandler inputHandler)
+        {
+            _camera = GetComponent<Camera>();
+            _inputHandler = inputHandler;
+        }
+
+        public void SetMoves(Moves moves)
         {
             _moves = moves;
-            _inputHandler = inputHandler;
-            
-            if (_moves != null)
-            {
-                Subscribe();
-            }
-                
+            Subscribe();
         }
 
         private void Update()
@@ -53,11 +55,6 @@ namespace Player.Scripts
             {
                 Unsubscribe();
             }
-        }
-
-        private void OnValidate()
-        {
-            _camera = GetComponent<Camera>();
         }
 
         public void Subscribe()

@@ -23,6 +23,7 @@ namespace UIService.Presenters
         
         public void Construct(Moves moves = null)
         {
+            _text = GetComponent<TMP_Text>();
             _moves = moves;
             
             UpdateText();
@@ -40,11 +41,6 @@ namespace UIService.Presenters
             {
                 Unsubscribe();
             }
-        }
-
-        private void OnValidate()
-        {
-            _text = GetComponent<TMP_Text>();
         }
 
         public void Subscribe()

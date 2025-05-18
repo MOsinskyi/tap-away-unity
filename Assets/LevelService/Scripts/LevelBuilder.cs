@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Common.InputService.Interfaces;
 using Common.Utils;
 using Cube.Configs;
 using Cube.Scripts;
@@ -16,7 +15,6 @@ namespace LevelService.Scripts
   {
     private readonly UniversalUtils _utils;
     private readonly PlayerPointer _playerPointer;
-    private readonly IInputHandler _inputHandler;
     private readonly LevelUIContext _ui;
     private readonly RankBar _rankBar;
     private readonly GameHandler _gameHandler;
@@ -32,12 +30,11 @@ namespace LevelService.Scripts
     private bool _withRankBar;
     private bool _withGameOver;
 
-    public LevelBuilder(UniversalUtils utils, PlayerPointer playerPointer, IInputHandler inputHandler,
-      LevelUIContext ui, RankBar rankBar, GameHandler gameHandler)
+    public LevelBuilder(UniversalUtils utils, PlayerPointer playerPointer, LevelUIContext ui, RankBar rankBar,
+      GameHandler gameHandler)
     {
       _utils = utils;
       _playerPointer = playerPointer;
-      _inputHandler = inputHandler;
       _ui = ui;
       _rankBar = rankBar;
       _gameHandler = gameHandler;
@@ -88,11 +85,10 @@ namespace LevelService.Scripts
       {
         _moves = new Moves(level as IFixedMoves);
         _gameHandler.SetMoves(_moves);
+        _playerPointer.SetMoves(_moves);
       }
 
       InitializeCubes(level, _moves);
-
-      _playerPointer.Initialize(_inputHandler, _moves);
 
       var cubeContainer = new CubeContainer(_cubes, _playerPointer, _rankBar, _withRankBar);
 

@@ -3,7 +3,6 @@ using Common.Scripts;
 using Common.Utils;
 using UnityEngine;
 using Zenject;
-using SystemInfo = UnityEngine.Device.SystemInfo;
 
 namespace Common.Installers
 {
@@ -14,9 +13,9 @@ namespace Common.Installers
     public override void InstallBindings()
     {
       BindInputService();
-      BindCoroutinePerformer();
       BindUtils();
       BindBootstrap();
+      BindCoroutinePerformer();
     }
 
     private void BindBootstrap()
@@ -35,7 +34,7 @@ namespace Common.Installers
 
     private void BindInputService()
     {
-      if (Application.isMobilePlatform)
+      if (SystemInfo.deviceType == DeviceType.Handheld)
       {
         Container
           .BindInterfacesAndSelfTo<MobileInput>()
@@ -51,13 +50,11 @@ namespace Common.Installers
     
     private void BindCoroutinePerformer()
     {
-      var coroutinePerformer = Container
-        .InstantiatePrefabForComponent<CoroutinePerformer>(coroutinePerformerPrefab.gameObject);
-
       Container
         .BindInterfacesAndSelfTo<CoroutinePerformer>()
-        .FromInstance(coroutinePerformer)
-        .AsSingle();
+        .FromComponentInNewPrefab(coroutinePerformerPrefab)
+        .AsSingle()
+        .NonLazy();
     }
   }
 }

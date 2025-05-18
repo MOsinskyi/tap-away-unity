@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Common.Utils;
 using LevelService.Factories.Interfaces;
 using LevelService.Scripts;
 using Unity.VisualScripting;
@@ -13,9 +14,9 @@ namespace LevelService.Factories.Scripts
         private readonly Transform _container;
         private readonly List<EasyLevel> _levels;
 
-        public EasyLevelFactory(IEnumerable<EasyLevel> levels, Transform container)
+        public EasyLevelFactory(UniversalUtils utils, Transform container)
         {
-            _levels = levels.ToList();
+            _levels = utils.ResourcesLoader.LoadLevels<EasyLevel>();
             _container = container;
         }
 
@@ -27,5 +28,7 @@ namespace LevelService.Factories.Scripts
 
             return level;
         }
+
+        public int LevelCount => _levels.Count;
     }
 }
