@@ -31,20 +31,16 @@ namespace GameService.Scripts
       Subscribe();
     }
 
-    public GameHandler SetMoves(Moves moves)
+    public void SetMoves(Moves moves)
     {
       _moves = moves;
       _moves.OnMovesEmpty += OnMovesEmpty;
-
-      return this;
     }
 
-    public GameHandler SetCubeContainer(CubeContainer container)
+    public void SetCubeContainer(CubeContainer container)
     {
       _cubeContainer = container;
       _cubeContainer.OnCubeContainerEmpty += OnCubeContainerEmpty;
-
-      return this;
     }
 
     public void Subscribe()
@@ -74,7 +70,11 @@ namespace GameService.Scripts
         _gameConfig.OnClearLevelData -= OnClearLevelData;
       }
 
-      _cubeContainer.OnCubeContainerEmpty -= OnCubeContainerEmpty;
+      if (_cubeContainer != null)
+      {
+        _cubeContainer.OnCubeContainerEmpty -= OnCubeContainerEmpty;
+      }
+      
     }
 
     private void OnClearLevelData() => _rankBar.Reset();
@@ -105,9 +105,18 @@ namespace GameService.Scripts
         yield return new WaitForSeconds(_gameConfig.SleepTime);
         OnGameOver?.Invoke();
       }
-      else if (_cubeContainer.CubesCount == 0)
+      else if (_cubeContainer.CubesCount <= 0)
       {
-        _levelCompletedFX.Play();
+        try
+        {
+          _levelCompletedFX.Play();
+        }
+        catch (NullReferenceException e)
+        {
+          Debug.LogError(_levelCompletedFX.GetType() + " is null!");
+          Debug.LogException(e);
+          throw;
+        }
         yield return new WaitForSeconds(_gameConfig.SleepTime);
         OnLevelCompleted?.Invoke();
       }

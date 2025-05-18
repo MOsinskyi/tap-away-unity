@@ -53,8 +53,7 @@ namespace Common.Installers
       Container
         .BindInterfacesAndSelfTo<CoroutinePerformer>()
         .FromComponentInNewPrefab(coroutinePerformerPrefab)
-        .AsSingle()
-        .NonLazy();
+        .AsSingle();
     }
   }
 }
