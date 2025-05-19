@@ -5,6 +5,7 @@ using Common.Utils;
 using Cube.Scripts;
 using FXService.LevelCompletedFX.Scripts;
 using GameService.Configs;
+using JetBrains.Annotations;
 using UIService.Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,6 +21,8 @@ namespace GameService.Scripts
 
     private Moves _moves;
     private CubeContainer _cubeContainer;
+
+    private bool _isGameEnded;
 
     public GameHandler(CoroutinePerformer coroutinePerformer, UniversalUtils utils, LevelCompletedFX levelCompletedFX,
       RankBar rankBar)
@@ -100,29 +103,25 @@ namespace GameService.Scripts
 
     private IEnumerator WaitForAnimations()
     {
-      if (_moves is { Count: 0 } && _cubeContainer.CubesCount > 0)
+      if (!_isGameEnded)
       {
-        yield return new WaitForSeconds(_gameConfig.SleepTime);
-        OnGameOver?.Invoke();
-      }
-      else if (_cubeContainer.CubesCount <= 0)
-      {
-        try
+        _isGameEnded = true;
+        
+        if (_cubeContainer.CubesCount <= 0)
         {
           _levelCompletedFX.Play();
+          yield return new WaitForSeconds(_gameConfig.SleepTime);
+          OnLevelCompleted?.Invoke();
         }
-        catch (NullReferenceException e)
+        else if (_moves is { Count: 0 } && _cubeContainer.CubesCount > 0)
         {
-          Debug.LogError(_levelCompletedFX.GetType() + " is null!");
-          Debug.LogException(e);
-          throw;
+          yield return new WaitForSeconds(_gameConfig.SleepTime);
+          OnGameOver?.Invoke();
         }
-        yield return new WaitForSeconds(_gameConfig.SleepTime);
-        OnLevelCompleted?.Invoke();
-      }
-      else
-      {
-        OnRankCompleted?.Invoke();
+        else
+        {
+          OnRankCompleted?.Invoke();
+        }
       }
     }
 

@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using GameService.Scripts;
 using UnityEngine;
 
@@ -16,6 +16,7 @@ namespace LevelService.Scripts
     {
       Cubes = GetComponentsInChildren<Cube.Scripts.Cube>().ToList();
       gameObject.name = LevelName;
+      DOTween.SetTweensCapacity(Cubes.Count * 4, Cubes.Count * 2);
 
       CheckRules();
     }

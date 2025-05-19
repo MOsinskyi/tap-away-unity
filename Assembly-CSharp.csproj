@@ -62,10 +62,10 @@
     <Compile Include="Assets\Common\Utils\ICoroutinePerformer.cs" />
     <Compile Include="Assets\Common\InputService\Scripts\DesktopInput.cs" />
     <Compile Include="Assets\UIService\Presenters\TutorialMessagePresenter.cs" />
-    <Compile Include="Assets\Common\Scripts\Bootstrap.cs" />
     <Compile Include="Assets\CurrentLevelService\Interfaces\ILevelType.cs" />
     <Compile Include="Assets\Common\Installers\LevelInstaller.cs" />
     <Compile Include="Assets\Cube\Scripts\CubeInstantiateAnimation.cs" />
+    <Compile Include="Assets\Common\Utils\FpsHandler.cs" />
     <Compile Include="Assets\UIService\Configs\GameOverScreenConfig.cs" />
     <Compile Include="Assets\Common\Installers\RankBarInstaller.cs" />
     <Compile Include="Assets\UIService\Configs\RankCompletedConfig.cs" />
@@ -126,7 +126,6 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-    <None Include="Assets\Resources\PerformanceTestRunInfo.json" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
@@ -139,7 +138,6 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Common\Shaders\ToonShaderStandart.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\Resources\PerformanceTestRunSettings.json" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />

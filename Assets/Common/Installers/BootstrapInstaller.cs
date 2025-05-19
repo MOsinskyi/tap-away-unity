@@ -1,12 +1,11 @@
 ﻿using Common.InputService.Scripts;
-using Common.Scripts;
 using Common.Utils;
 using UnityEngine;
 using Zenject;
 
 namespace Common.Installers
 {
-  public class BootstrapInstaller : MonoInstaller
+  public sealed class BootstrapInstaller : MonoInstaller
   {
     [SerializeField] private CoroutinePerformer coroutinePerformerPrefab;
     
@@ -14,14 +13,14 @@ namespace Common.Installers
     {
       BindInputService();
       BindUtils();
-      BindBootstrap();
       BindCoroutinePerformer();
+      BindFpsHandler();
     }
 
-    private void BindBootstrap()
+    private void BindFpsHandler()
     {
       Container
-        .Bind<Bootstrap>()
+        .Bind<FpsHandler>()
         .AsSingle();
     }
 
@@ -34,7 +33,7 @@ namespace Common.Installers
 
     private void BindInputService()
     {
-      if (SystemInfo.deviceType == DeviceType.Handheld)
+      if (SystemInfo.deviceType == DeviceType.Handheld || Application.isMobilePlatform)
       {
         Container
           .BindInterfacesAndSelfTo<MobileInput>()

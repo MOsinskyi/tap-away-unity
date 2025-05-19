@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9286accb150b47958a863a878243d87d, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
+  <MaxFrameRate>k__BackingField: 240
   <TargetFrameRate>k__BackingField: 60
   <SleepTime>k__BackingField: 1
