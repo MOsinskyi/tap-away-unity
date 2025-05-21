@@ -27,7 +27,7 @@
                     "name": "Reset",
                     "type": "Button",
                     "id": "95fe68a0-a094-4119-bedb-49c12a690cef",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -36,7 +36,7 @@
                     "name": "MouseRotateButton",
                     "type": "Button",
                     "id": "14345bad-fe1e-472d-aa06-0b61bf23d571",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

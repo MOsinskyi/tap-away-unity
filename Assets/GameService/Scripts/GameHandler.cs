@@ -101,6 +101,11 @@ namespace GameService.Scripts
       _coroutinePerformer.StartCoroutine(WaitForAnimations());
     }
 
+    public void ResumeGame()
+    {
+      _isGameEnded = false;
+    }
+
     private IEnumerator WaitForAnimations()
     {
       if (!_isGameEnded)

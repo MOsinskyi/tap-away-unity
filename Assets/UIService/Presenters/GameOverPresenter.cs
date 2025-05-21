@@ -67,6 +67,7 @@ namespace UIService.Presenters
     {
       _moves.AddMoves(_addMovesButtonConfig.MovesToAdd);
       _addMovesClicked = true;
+      _gameHandler.ResumeGame();
       Hide();
     }
 
